@@ -1,18 +1,20 @@
+import ACTION_TYPES from '../actions/actionTypes';
+
 const initialState = { count: 0, step: 1 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'increment':
+    case ACTION_TYPES.INCREMENT:
       return {
         ...state,
         count: state.count + state.step,
       };
-    case 'decrement':
+    case ACTION_TYPES.DECREMENT:
       return {
         ...state,
         count: state.count - state.step,
       };
-    case 'setStep':
+    case ACTION_TYPES.SET_STEP:
       return {
         ...state,
         step: action.value,
