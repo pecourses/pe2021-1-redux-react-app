@@ -1,27 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ACTION_TYPES from '../../actions/actionTypes';
+import * as actionCreators from './../../actions';
 
 function Counter (props) {
   const { count, step, dispatch } = props;
 
   const increment = () => {
-    // action - js-object {type: 'string' }
-    const action = { type: ACTION_TYPES.INCREMENT };
-    dispatch(action);
+    dispatch(actionCreators.increment());
   };
 
   const decrement = () => {
-    const action = { type: ACTION_TYPES.DECREMENT };
-    dispatch(action);
+    dispatch(actionCreators.decrement());
   };
 
   const setStep = event => {
-    const action = {
-      type: ACTION_TYPES.SET_STEP,
-      value: Number(event.target.value),
-    };
-    dispatch(action);
+    dispatch(actionCreators.setStep(Number(event.target.value)));
   };
 
   return (
@@ -36,8 +30,8 @@ function Counter (props) {
 
 const mapStateToProps = state => state;
 
-const withState = connect(mapStateToProps);
+// const withState = connect(mapStateToProps);
+// const CounterWithState = withState(Counter);
+// export default CounterWithState;
 
-const CounterWithState = withState(Counter);
-
-export default CounterWithState;
+export default connect(mapStateToProps)(Counter);
