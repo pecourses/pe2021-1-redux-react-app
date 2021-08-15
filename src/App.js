@@ -1,9 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
-import Counter from './components/Counter';
+import UserPage from './pages/UserPage';
 
 function App () {
-  return <Counter />;
+  return <UserPage />;
 }
 
 export default App;
