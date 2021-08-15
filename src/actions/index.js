@@ -15,3 +15,17 @@ export const createUser = userData => {
     userData: userData,
   };
 };
+
+export const deleteUser = id => {
+  return {
+    type: ACTION_TYPES.DELETE_USER,
+    id: id,
+  };
+};
+
+export const updateUser = newInfo => {
+  return {
+    type: ACTION_TYPES.UPDATE_USER,
+    newInfo: newInfo,
+  };
+};

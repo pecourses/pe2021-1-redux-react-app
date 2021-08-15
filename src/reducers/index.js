@@ -4,15 +4,16 @@ import usersReducer from './usersReducer';
 
 const rootReducer = combineReducers({
   counter: counterReducer,
-  users: usersReducer,
+  userState: usersReducer,
 });
+
 export default rootReducer;
 // const initialState = {
 //   counter: {
 //     count: 0,
 //     step: 1,
 //   },
-//   users: {
+//   userState: {
 //     users: [
 //       {
 //         name: 'Myself',

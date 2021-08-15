@@ -25,7 +25,33 @@ const usersReducer = (state = initialState, action) => {
       };
 
       const newUsers = [...users, newUser];
-      return newUsers;
+      return { users: newUsers };
+    }
+    case ACTION_TYPES.DELETE_USER: {
+      const { users } = state;
+      const { id } = action;
+
+      const newUsers = [...users];
+      newUsers.splice(
+        newUsers.findIndex(u => id === u.id),
+        1
+      );
+
+      return { users: newUsers };
+    }
+    case ACTION_TYPES.UPDATE_USER: {
+      const { users } = state;
+      const { newInfo: newUserInfo } = action;
+      const newUsers = [...users];
+
+      const index = newUsers.findIndex(u => newUserInfo.id === u.id);
+      newUsers[index] = {
+        ...newUsers[index],
+        // isBanned: newUserInfo.isBanned,
+        ...newUserInfo,
+      };
+
+      return { users: newUsers };
     }
     default:
       return state;
