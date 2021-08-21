@@ -1,9 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import * as actionCreators from './../../actions';
 
 // Получить состояние из глобального состояния
 function UsersSagaList (props) {
-  const {} = props;
+  const { users, isFetching, error, getUsers } = props;
+
+  useEffect(() => {
+    getUsers();
+  }, []);
 
   const mapUser = ({ id, name, telNumber, isBanned }) => {
     const changeBann = () => {
@@ -25,7 +30,13 @@ function UsersSagaList (props) {
   return <ul>{users.map(mapUser)}</ul>;
 }
 
-export default UsersSagaList;
+const mapStateToProps = state => state.user;
+
+const mapDispatchToProps = dispatch => ({
+  getUsers: () => dispatch(actionCreators.getUsersAction()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(UsersSagaList);
 
 // 1 actionCreators : update(i, value), delete(i)
 // 2 mapDispatchToProps

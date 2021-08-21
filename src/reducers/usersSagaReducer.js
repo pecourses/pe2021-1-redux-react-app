@@ -36,3 +36,5 @@ function usersSagaReducer (state, action) {
       return state;
   }
 }
+
+export default usersSagaReducer;

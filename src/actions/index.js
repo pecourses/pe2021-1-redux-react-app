@@ -29,3 +29,20 @@ export const updateUser = newInfo => {
     newInfo: newInfo,
   };
 };
+
+export const getUsersAction = () => ({
+  type: ACTION_TYPES.GET_USERS_ACTION,
+});
+
+export const getUsersRequest = () => ({
+  type: ACTION_TYPES.GET_USERS_REQUEST,
+});
+
+export const getUsersSuccess = users => ({
+  type: ACTION_TYPES.GET_USERS_SUCCESS,
+  users: users,
+});
+export const getUsersError = e => ({
+  type: ACTION_TYPES.GET_USERS_ERROR,
+  error: e,
+});

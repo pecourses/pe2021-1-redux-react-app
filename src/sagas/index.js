@@ -1,6 +1,6 @@
 import { takeLatest } from 'redux-saga/effects';
 import ACTION_TYPES from '../actions/actionTypes';
-import getUsersSaga from './usersSaga';
+import { getUsersSaga } from './usersSaga';
 
 function * rootSaga () {
   yield takeLatest(ACTION_TYPES.GET_USERS_ACTION, getUsersSaga);
