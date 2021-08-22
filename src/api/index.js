@@ -41,5 +41,5 @@ export const createUser = user => {
 // export const deleteUser = id => apiInstance.delete(`/users/${id}`)
 export const deleteUser = id => {
   const index = users.findIndex(u => u.id === id);
-  return Promise.resolve(users.splice(index, 1));
+  return Promise.resolve({ data: users.splice(index, 1) });
 };

@@ -24,7 +24,13 @@ function UsersSagaList (props) {
     );
   };
 
-  return <ul>{users.map(mapUser)}</ul>;
+  return (
+    <>
+      {isFetching && <div>Loading...</div>}
+      {error && <div>ERROR</div>}
+      <ul>{users.map(mapUser)}</ul>
+    </>
+  );
 }
 
 const mapStateToProps = state => state.user;
