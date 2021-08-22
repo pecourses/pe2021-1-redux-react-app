@@ -66,3 +66,22 @@ export const createUserError = e => ({
   type: ACTION_TYPES.CREATE_USER_ERROR,
   error: e,
 });
+//Delete:
+export const deleteUserAction = id => ({
+  type: ACTION_TYPES.DELETE_USER_ACTION,
+  id: id,
+});
+
+export const deleteUserRequest = () => ({
+  type: ACTION_TYPES.DELETE_USER_REQUEST,
+});
+
+export const deleteUserSuccess = deletedUser => ({
+  type: ACTION_TYPES.DELETE_USER_SUCCESS,
+  deletedUser,
+});
+
+export const deleteUserError = e => ({
+  type: ACTION_TYPES.DELETE_USER_ERROR,
+  error: e,
+});

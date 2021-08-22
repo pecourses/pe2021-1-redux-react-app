@@ -36,3 +36,10 @@ export const createUser = user => {
   users.push(newUser);
   return Promise.resolve({ data: newUser });
 };
+
+// 'http://127.0.0.1:5000/api/users/id'
+// export const deleteUser = id => apiInstance.delete(`/users/${id}`)
+export const deleteUser = id => {
+  const index = users.findIndex(u => u.id === id);
+  return Promise.resolve(users.splice(index, 1));
+};

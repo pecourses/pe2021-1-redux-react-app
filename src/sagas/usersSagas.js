@@ -6,6 +6,9 @@ import {
   getUsersError,
   getUsersRequest,
   getUsersSuccess,
+  deleteUserRequest,
+  deleteUserSuccess,
+  deleteUserError,
 } from '../actions';
 import * as API from '../api';
 
@@ -39,5 +42,16 @@ export function * createUserSaga (action) {
     yield put(createUserSuccess(newUser));
   } catch (e) {
     yield put(createUserError(e));
+  }
+}
+
+export function * deleteUserSaga (action) {
+  const { id } = action;
+  yield put(deleteUserRequest());
+  try {
+    const { data: deletedUser } = yield API.deleteUser(id);
+    yield put(deleteUserSuccess(deletedUser));
+  } catch (e) {
+    yield put(deleteUserError(e));
   }
 }

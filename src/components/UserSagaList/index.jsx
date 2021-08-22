@@ -4,25 +4,22 @@ import * as actionCreators from './../../actions';
 
 // Получить состояние из глобального состояния
 function UsersSagaList (props) {
-  const { users, isFetching, error, getUsers } = props;
+  const { users, isFetching, error, getUsers, deleteUser } = props;
 
   useEffect(() => {
     getUsers();
-  }, [users.length]);
+  }, []);
 
   const mapUser = ({ id, name, telNumber, isBanned }) => {
-    // const changeBann = () => {
-    //   updateUserAction({ id: id, isBanned: !isBanned });
-    // };
+    const deleteHandler = () => {
+      deleteUser(id);
+    };
 
-    // const deleteUser = () => {
-    //   deleteUserAction(id);
-    // };
     return (
       <li key={id}>
         ID: {id} name: {name} tel.: {telNumber}
         <input type='checkbox' checked={isBanned} />
-        <button>Delete</button>
+        <button onClick={deleteHandler}>Delete</button>
       </li>
     );
   };
@@ -34,6 +31,7 @@ const mapStateToProps = state => state.user;
 
 const mapDispatchToProps = dispatch => ({
   getUsers: () => dispatch(actionCreators.getUsersAction()),
+  deleteUser: id => dispatch(actionCreators.deleteUserAction(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UsersSagaList);
