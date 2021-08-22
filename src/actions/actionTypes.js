@@ -11,6 +11,18 @@ const ACTION_TYPES = {
   GET_USERS_REQUEST: 'GET_USERS_REQUEST',
   GET_USERS_SUCCESS: 'GET_USERS_SUCCESS',
   GET_USERS_ERROR: 'GET_USERS_ERROR',
+  // CREATE:
+  CREATE_USER_ACTION: 'CREATE_USER_ACTION', // Saga
+  CREATE_USER_REQUEST: 'CREATE_USER_REQUEST',
+  CREATE_USER_SUCCESS: 'CREATE_USER_SUCCESS',
+  CREATE_USER_ERROR: 'CREATE_USER_ERROR',
 };
 
 export default ACTION_TYPES;
+
+//+ ACTION_TYPES + actionCreators
+// Перехват рутовой сагой CREATE_USER_ACTION
+// Реализовать сагу - обработчик екшна CREATE_USER_ACTION
+// Реализовать запрос на сервер (заглушку) в api
+// Реализовать редюсер
+// Внести изменения в форму
