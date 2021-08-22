@@ -1,9 +1,10 @@
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import { connect } from 'react-redux';
+import { createUserAction } from './../../actions';
 
 function UserSagaForm (props) {
-  const {} = props;
+  const { createUser } = props;
 
   const initialUserValues = {
     name: '',
@@ -11,7 +12,7 @@ function UserSagaForm (props) {
     isBanned: false,
   };
   const submitHandler = (values, formikBag) => {
-    //
+    createUser(values);
     formikBag.resetForm();
   };
 
@@ -30,4 +31,10 @@ function UserSagaForm (props) {
   );
 }
 
-export default UserSagaForm;
+const mapDispatchToProps = dispatch => ({
+  createUser: user => {
+    dispatch(createUserAction(user));
+  },
+});
+
+export default connect(null, mapDispatchToProps)(UserSagaForm);

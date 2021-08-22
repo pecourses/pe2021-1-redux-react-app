@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import * as actionCreators from './../../actions';
 
@@ -8,21 +8,21 @@ function UsersSagaList (props) {
 
   useEffect(() => {
     getUsers();
-  }, []);
+  }, [users.length]);
 
   const mapUser = ({ id, name, telNumber, isBanned }) => {
-    const changeBann = () => {
-      updateUserAction({ id: id, isBanned: !isBanned });
-    };
+    // const changeBann = () => {
+    //   updateUserAction({ id: id, isBanned: !isBanned });
+    // };
 
-    const deleteUser = () => {
-      deleteUserAction(id);
-    };
+    // const deleteUser = () => {
+    //   deleteUserAction(id);
+    // };
     return (
       <li key={id}>
         ID: {id} name: {name} tel.: {telNumber}
-        <input type='checkbox' checked={isBanned} onChange={changeBann} />
-        <button onClick={deleteUser}>Delete</button>
+        <input type='checkbox' checked={isBanned} />
+        <button>Delete</button>
       </li>
     );
   };
